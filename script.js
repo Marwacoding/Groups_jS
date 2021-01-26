@@ -10,15 +10,10 @@ function listStored(){
         student_list = localStorage.getItem("list").split(",")
         document.getElementById("student_list").innerText = student_list
 
-         document.querySelector("#student_list").innerHTML += 
-        "<li>"+document.querySelector('.name').value+"</li>";
-
         console.log(student_list)
     }
 
 }
-
-listStored()
 
 
 //first input into a var
@@ -26,29 +21,43 @@ listStored()
 const userInput = document.querySelector("#inputName");
 const displayGroup = document.querySelector(".displayGroup");
 
-
 // click event to store link it to the click event
+// inner HTMl, value == write element value in HTML
 
 let btn_add = document.querySelector("#btnadd")
 
 btn_add.addEventListener("click", (e) => {
     arr(userInput.value)
 
-    
-    let arr_shuffle = shuffle(student_list)
-    console.log(arr_shuffle)
-    localStorage.setItem('list', student_list)
-    ul = document.querySelector('student_list')
+        let arr_shuffle = shuffle(student_list)
+        console.log(arr_shuffle)
+        localStorage.setItem('list', student_list)
+        ul = document.querySelector('#student_list')
 
-    if (userInput.value.length > 0) {
-        const li_element = document.createElement('li');
-        li_element.innerHTML = userInput.value;
-        ul.appendChild(li_element);
+        function add_li_html() {
+
+        if (userInput.value.length > 0) {
+
+            const li_element = document.createElement('li');
+            li_element.innerHTML = userInput.value;
+            console.log(li_element)
+            ul.appendChild(li_element);
+
+        }}
+
+        add_li_html()
         userInput.value = '';
-    }
-
-
+        
 })
+
+btn_add.addEventListener("keypress", (e) => {
+    console.log('hello')
+    if (e.keyCode === 'Enter') { 
+        //arr(userInput.value)
+        console.log('hello')
+        ///add_li_html()
+    };
+});
 
 //Partie 2
 //Former les groups
@@ -58,7 +67,7 @@ btn_add.addEventListener("click", (e) => {
 let nbrPerGroups = document.querySelector("#groups_name")
 let diviserBtn = document.querySelector("#makeGroup")
 
-numberPeople.addEventListener("input", function(event) {
+numberPeople.addEventListener("input", function(e) {
       usersChoiceGroups = numberPeople.value
       console.log(numberPeople.value)
 });
@@ -66,13 +75,17 @@ numberPeople.addEventListener("input", function(event) {
 
 diviserBtn.addEventListener("click", (e) => {
     
-    let finalGroups = groupsGenerator(student_list, 2) //usersChoiceGroups )
+    let finalGroups = groupsGenerator(student_list, 2 )
     console.log("log of final groups ", finalGroups)
-    
+
+    //const divGroups = document.querySelector("#groups");
+	//const groups = createNGroups(student_list, nbOfGroups);
+
 
     //document.getElementById()
 
     //let div = document.createElement
+
 
 
 });
@@ -85,8 +98,6 @@ function arr(names) {
     student_list.push((document.querySelector('.name').value))
 
 }
-
-let arr_shuffle = shuffle("name", student_list)
 
 
 //Shuffle function
