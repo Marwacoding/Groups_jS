@@ -16,6 +16,7 @@ function listStored(){
 }
 
 
+
 //first input into a var
 
 const userInput = document.querySelector("#inputName");
@@ -27,7 +28,7 @@ const displayGroup = document.querySelector(".displayGroup");
 let btn_add = document.querySelector("#btnadd")
 
 btn_add.addEventListener("click", (e) => {
-    arr(userInput.value)
+    my_arr(userInput.value)
 
         let arr_shuffle = shuffle(student_list)
         console.log(arr_shuffle)
@@ -40,7 +41,7 @@ btn_add.addEventListener("click", (e) => {
 
             const li_element = document.createElement('li');
             li_element.innerHTML = userInput.value;
-            console.log(li_element)
+            //console.log(li_element)
             ul.appendChild(li_element);
 
         }}
@@ -64,41 +65,37 @@ btn_add.addEventListener("keypress", (e) => {
 
 // Variable 
 //Event listener => store la valeur de l'input dans une variable
-let nbrPerGroups = document.querySelector("#groups_name")
+
 let diviserBtn = document.querySelector("#makeGroup")
 
-numberPeople.addEventListener("input", function(e) {
-      usersChoiceGroups = numberPeople.value
-      console.log(numberPeople.value)
-});
+numberPeople.addEventListener("input", function peoplePerGroup() {  
+    nbrPerGroups = numberPeople.value
+    console.log('this is my nbrPerGroups', nbrPerGroups)
 
+});
 
 diviserBtn.addEventListener("click", (e) => {
-    
-    let finalGroups = groupsGenerator(student_list, 2 )
-    console.log("log of final groups ", finalGroups)
 
-    //const divGroups = document.querySelector("#groups");
-	//const groups = createNGroups(student_list, nbOfGroups);
+    const nbrPerGroups = document.querySelector("#numberPeople").value 
+    console.log('variable nbr_per_groups', nbrPerGroups)
+    const divGroups = document.querySelector(".forming_groups");
+    const finalGroups = groupsGenerator(student_list, nbrPerGroups)
+    console.log('this is my final groups',finalGroups)
 
-
-    //document.getElementById()
-
-    //let div = document.createElement
-
-
-
+    //divGroups.innerHTML = "";
+    for (let i = 0; i < finalGroups.length; i++) {
+        divGroups.appendChild(createDiv(finalGroups[i]))
+    }
+ 
 });
 
 
-
-//fuction that add inpur to an array
-function arr(names) {
+//fuction that add input to an array
+function my_arr(names) {
 
     student_list.push((document.querySelector('.name').value))
 
 }
-
 
 //Shuffle function
 function shuffle(arr) {
@@ -120,10 +117,28 @@ for (let i=0; i < an_arr.length; i+=diviser) {
     // separe l'array par groupe /r au diviseur
     formedGroups.push(an_arr.slice(i, i+diviser))
    // console.log("show the arr element : ", formedGroups)
-    
 }
-    
     return formedGroups
     
 }
 
+function createDiv(i){
+
+    let div = document.createElement('div');
+    div.classList.add('mainDiv');
+
+    let titleDiv = document.createElement('div');
+    titleDiv.classList.add('titleDiv')
+    titleDiv.innerText = `Groupe ${i}`
+
+    let groupDiv = document.createElement('div')
+    groupDiv.classList.add('groupName')
+
+    div.appendChild(titleDiv)
+    titleDiv.appendChild(groupDiv)
+
+    
+    return div
+}
+
+createDiv(2)
