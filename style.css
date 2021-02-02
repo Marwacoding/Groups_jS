@@ -1,0 +1,34 @@
+body{
+    background-color:#999DCC;
+}
+
+.main {
+    text-align: center;
+    border: 1px gray solid;
+    background-color: #B4B5DD;
+    padding: 6em 0;
+    border-radius: 1em;
+    max-width: 600px;
+    width: 100%;
+    margin : auto;
+}
+
+.input{
+    padding: .8em 13em;
+    border-radius: .8em;
+}
+
+
+
+.btn{
+    display : block;
+    margin : 1em auto;
+    padding: .5em 10em;
+    background-color: #999DCC;
+    border-radius: .8em;
+}
+
+.li_element{
+    list-style: none;
+}
+

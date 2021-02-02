@@ -4,34 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Groups genrator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="title">
-            <h1 class="" id="main-title">Groups Generator</h1>
-            <p class="description">The site that helps you to form groups</p>
-        </div>    
-    </header>
-    <form>
+    <div class="main">
+        <header>
+            <div class="title">
+                <h1 class="" id="main-title">Groups Generator</h1>
+                <p class="description">The site that helps you to form groups</p>
+            </div>    
+        </header>
 
-        <div class="list_of_name">
-            <label for="Name" class="userName"></label>
-            <input type="text" id="input_Name" name="user_name" placeholder="Enter the names ">
-            <button class="add_name" id="name_btn" type="button">Add</button>
-            <br>
+    
+        <form>
 
-            <label for="Name" id="nbr_per_groups"> </label>
-            <input type="text"  name="groups_name" placeholder="Person per groups ?">
-            <button class="add_name" id="forming_groups" type="button">Select groups</button>
-            <br>
+            <div class="list_of_name">
+                <label for="Name" class="userName"></label>
+                <input type="text" class="name input" id="inputName" name="user_name" placeholder="Enter the names ">
+                <button class="add_name btn" id="btnadd" type="button">Add</button>
+                <hr>
+                <hr>
+
+                <h2> Here is your names list</h2>
+
+                <label id="list" for=""></label>
+                <ul id="student_list"> 
+                    
+                </ul>
+
+                <label for="Number"> </label>
+                <input type="number" class="input" id="numberPeople" name="groups_name" placeholder="Person per groups ?">
+                <button class="add_name btn" id="makeGroup" type="button">Select groups</button>
+                <br>
+
+            </div>
+            
+        </form>
+
+        <div class="forming_groups">
 
         </div>
-        
-        <div>
 
-        </div>
-    </form>
-
+    </div>
 
     <script src="script.js"></script>
 </body>

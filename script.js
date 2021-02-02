@@ -41,7 +41,7 @@ btn_add.addEventListener("click", (e) => {
 
             const li_element = document.createElement('li');
             li_element.innerHTML = userInput.value;
-            //console.log(li_element)
+            li_element.classList.add('li_element')
             ul.appendChild(li_element);
 
         }}
@@ -79,10 +79,11 @@ diviserBtn.addEventListener("click", (e) => {
     const nbrPerGroups = document.querySelector("#numberPeople").value 
     console.log('variable nbr_per_groups', nbrPerGroups)
     const divGroups = document.querySelector(".forming_groups");
-    const finalGroups = groupsGenerator(student_list, nbrPerGroups)
+    let finalGroups = groupsGenerator(student_list, nbrPerGroups)
     console.log('this is my final groups',finalGroups)
 
-    //divGroups.innerHTML = "";
+
+    divGroups.innerHTML = " ";
     for (let i = 0; i < finalGroups.length; i++) {
         divGroups.appendChild(createDiv(finalGroups[i]))
     }
@@ -116,7 +117,7 @@ for (let i=0; i < an_arr.length; i+=diviser) {
 
     // separe l'array par groupe /r au diviseur
     formedGroups.push(an_arr.slice(i, i+diviser))
-   // console.log("show the arr element : ", formedGroups)
+   console.log("show the arr element : ", an_arr)
 }
     return formedGroups
     
@@ -125,11 +126,11 @@ for (let i=0; i < an_arr.length; i+=diviser) {
 function createDiv(i){
 
     let div = document.createElement('div');
-    div.classList.add('mainDiv');
+    div.classList.add('groupDiv');
 
     let titleDiv = document.createElement('div');
     titleDiv.classList.add('titleDiv')
-    titleDiv.innerText = `Groupe ${i}`
+    titleDiv.innerText = `Groupe ${i.join(" ")}`
 
     let groupDiv = document.createElement('div')
     groupDiv.classList.add('groupName')
@@ -137,8 +138,7 @@ function createDiv(i){
     div.appendChild(titleDiv)
     titleDiv.appendChild(groupDiv)
 
-    
     return div
 }
 
-createDiv(2)
+createDiv()
